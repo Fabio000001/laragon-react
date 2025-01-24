@@ -22,9 +22,6 @@
         @vite('resources/js/app.jsx')
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-        <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50" id="app"></div>
-        @foreach ($products as $product)
-            <p>{{$product->name}} | {{$product->price}} | {{$product->stock}}</p>
-        @endforeach
+        <div id="app"></div>
     </body>
 </html>
