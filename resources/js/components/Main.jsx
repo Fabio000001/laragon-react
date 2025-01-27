@@ -4,6 +4,7 @@ import ProductList from './ProductList';
 
 const Main = () => {
   const [products, setProducts] = useState([]);
+  const [navData, setNavData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -13,6 +14,7 @@ const Main = () => {
       try {
         const response = await axios.get('/api/products');
         setProducts(response.data.data); // Asumiendo que los datos están en response.data.data
+        setNavData({ links: response.data.links, meta: response.data.meta })
         setLoading(false);
       } catch (err) {
         setError(err.message);
@@ -28,7 +30,7 @@ const Main = () => {
 
   return (
 
-    <ProductList products={products} />
+    <ProductList products={products} navData={navData} setNavData={setNavData} />
 
   );
 };

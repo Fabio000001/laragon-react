@@ -1,4 +1,5 @@
-const ProductList = ({ products }) => {
+const ProductList = (props) => {
+    const { products, navData, setNavData } = props;
     return (
         <div>
             <h1>Product List</h1>
