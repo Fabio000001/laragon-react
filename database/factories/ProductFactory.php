@@ -20,6 +20,7 @@ class ProductFactory extends Factory
             'name' => fake()->word(),
             'price' => fake()->randomFloat(2, 20, 500),
             'stock' => fake()->numberBetween(1, 100),
+            'image' => 'https://picsum.photos/200?random=' . $this->faker->unique()->numberBetween(1, 1000),
         ];
     }
 }

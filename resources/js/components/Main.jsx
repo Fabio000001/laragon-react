@@ -33,9 +33,10 @@ const Main = () => {
       <ul>
         {products.map(product => (
           <li key={product.id}>
-            <h2>{product.name}</h2>
+            <h2>Product: {product.name}</h2>
             <p>Price: ${product.price}</p>
             <p>Stock: {product.stock}</p>
+            <img src={product.image} alt={product.name} />
           </li>
         ))}
       </ul>
