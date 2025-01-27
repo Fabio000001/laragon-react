@@ -14,8 +14,8 @@ const ProductList = (props) => {
                 ))}
             </ul>
             <div className="bg-black text-white mt-6">
-                <button onClick={() => Pagination(navData.links.prev)}>Previous</button>
-                <button onClick={() => Pagination(navData.links.next)}>Next</button>
+                <button onClick={() => Pagination(navData.prev)}>Previous</button>
+                <button onClick={() => Pagination(navData.next)}>Next</button>
             </div>
         </div>
     );

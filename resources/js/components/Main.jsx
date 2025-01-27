@@ -15,7 +15,7 @@ const Main = () => {
       try {
         const response = await axios.get(`/api/products?page=${currentPage}`);
         setProducts(response.data.data); // Asumiendo que los datos están en response.data.data
-        setNavData({ links: response.data.links, meta: response.data.meta })
+        setNavData(response.data.links);
         setLoading(false);
       } catch (err) {
         setError(err.message);
