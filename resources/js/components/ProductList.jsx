@@ -1,5 +1,5 @@
 const ProductList = (props) => {
-    const { products, navData, setNavData } = props;
+    const { products, navData, Pagination } = props;
     return (
         <div>
             <h1>Product List</h1>
@@ -13,6 +13,10 @@ const ProductList = (props) => {
                     </li>
                 ))}
             </ul>
+            <div className="bg-black text-white mt-6">
+                <button onClick={() => Pagination(navData.links.prev)}>Previous</button>
+                <button onClick={() => Pagination(navData.links.next)}>Next</button>
+            </div>
         </div>
     );
 }
