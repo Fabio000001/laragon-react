@@ -13,9 +13,16 @@ const Main = () => {
     // Función para obtener los productos desde el endpoint
     const fetchProducts = async (currentPage) => {
       try {
-        const response = await axios.get(`/api/products?page=${currentPage}`);
-        setProducts(response.data.data); // Asumiendo que los datos están en response.data.data
-        setNavData(response.data.links);
+        const response = await fetch(`/api/products?page=${currentPage}`, { credentials: "include", });
+
+        if (response.redirected) {
+          window.location.href = response.url;
+          return;
+        }
+        const data = await response.json();
+
+        setProducts(data.data); // Asumiendo que los datos están en response.data.data
+        setNavData(data.links);
         setLoading(false);
       } catch (err) {
         setError(err.message);
@@ -27,7 +34,6 @@ const Main = () => {
   }, [currentPage]); // El array vacío como segundo argumento asegura que esto se ejecute solo una vez
 
   const Pagination = (page) => {
-    console.log(page.slice(44));
     setCurrentPage(page.slice(44));
   }
 
