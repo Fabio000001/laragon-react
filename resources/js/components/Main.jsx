@@ -27,8 +27,8 @@ const Main = () => {
   }, [currentPage]); // El array vacío como segundo argumento asegura que esto se ejecute solo una vez
 
   const Pagination = (page) => {
-    console.log(page.slice(page.length - 1));
-    setCurrentPage(page.slice(page.length - 1));
+    console.log(page.slice(44));
+    setCurrentPage(page.slice(44));
   }
 
   if (loading) return <div>Loading...</div>;
