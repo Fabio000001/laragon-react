@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
@@ -47,6 +48,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        Gate::authorize('delete', $product);
         $product->delete();
         return response()->json(['message' => 'Producto eliminado correctamente'], 200);
     }

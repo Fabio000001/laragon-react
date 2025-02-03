@@ -48,6 +48,7 @@ const Main = () => {
       setProducts(products.filter(product => product.id !== productId));
     } catch (error) {
       console.error("Error eliminando el producto:", error);
+      if (error.status == 403) alert("No tienes la autorización para eliminar este producto");
     }
   };
 
