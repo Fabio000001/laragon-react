@@ -1,5 +1,5 @@
 const ProductList = (props) => {
-    const { products, navData, Pagination } = props;
+    const { products, navData, Pagination, deleteProduct } = props;
     return (
         <div>
             <h1>Product List</h1>
@@ -10,12 +10,13 @@ const ProductList = (props) => {
                         <p>Price: ${product.price}</p>
                         <p>Stock: {product.stock}</p>
                         <img src={product.image} alt={product.name} />
+                        <button type="button" className="bg-black text-white mt-2 mb-6 p-2 rounded-md" onClick={() => deleteProduct(product.id)}>Borrar producto {product.id}</button>
                     </li>
                 ))}
             </ul>
-            <div className="bg-black text-white mt-6">
-                <button onClick={() => Pagination(navData.prev)}>Previous</button>
-                <button onClick={() => Pagination(navData.next)}>Next</button>
+            <div className="bg-black text-white mt-6 p-2 text-center">
+                <button onClick={() => Pagination(navData.prev)} className="mx-5">Previous</button>
+                <button onClick={() => Pagination(navData.next)} className="mx-5">Next</button>
             </div>
         </div>
     );

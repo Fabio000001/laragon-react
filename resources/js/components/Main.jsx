@@ -37,12 +37,26 @@ const Main = () => {
     setCurrentPage(page.slice(44));
   }
 
+  const deleteProduct = async (productId) => {
+    if (!window.confirm("¿Estás seguro de que quieres eliminar este producto?")) return;
+
+    try {
+      await axios.get("/sanctum/csrf-cookie");
+      await axios.delete(`/api/products/${productId}`, { withCredentials: true });
+
+      alert("Producto eliminado correctamente");
+      setProducts(products.filter(product => product.id !== productId));
+    } catch (error) {
+      console.error("Error eliminando el producto:", error);
+    }
+  };
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
   return (
 
-    <ProductList products={products} navData={navData} Pagination={Pagination} />
+    <ProductList products={products} navData={navData} Pagination={Pagination} deleteProduct={deleteProduct} />
 
   );
 };
